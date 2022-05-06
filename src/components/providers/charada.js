@@ -5,7 +5,7 @@ import CharadaList from '../../../charadas.json';
 export const Charada = createContext({});
 
 export const CharadaProvider = (props) => {
-    const charadaOfDay = CharadaList.charadas[3]
+    const charadaOfDay = CharadaList.charadas[8]
     const [attempts, setAttempts] = useState(0)
     const [myAnswer, setMyAnswer] = useState('')
     const [isSuccess, setIsSuccess] = useState()
