@@ -2,9 +2,20 @@ import react, {useState, useEffect} from "react";
 import { useCharada } from "../providers/charada";
 
 export function InputAnswer() {
-    const { charadaOfDay, setAttempts, attempts, setMyAnswer, isSuccess} = useCharada()
+    const { charadaOfDay, myStats, setMyStats} = useCharada()
     const [inputAnswer, setInputAnswer] = useState('')
 
+    const isCorrectAnswer = () => {
+        if (inputAnswer === charadaOfDay.resposta) {
+            setMyStats({ stats: true, attempts: myStats.attempts + 1, myAnswer: inputAnswer })
+            const stats = {stats: true, attempts: myStats.attempts + 1, myAnswer: inputAnswer }
+            localStorage.setItem('charadaStats', JSON.stringify(stats))
+        } else {
+            setMyStats({ stats: false, attempts: myStats.attempts + 1, myAnswer: inputAnswer }) 
+            const stats = { stats: false, attempts: myStats.attempts + 1, myAnswer: inputAnswer }
+            localStorage.setItem('charadaStats', JSON.stringify(stats))
+        }
+    }
 
     return (
         <form
@@ -14,12 +25,10 @@ export function InputAnswer() {
                 if (inputAnswer.length === 0) {
                     return
                 } else {
-                    if (isSuccess === true) {
+                    if (myStats.stats === true) {
                         return
                     } else {
-                        setAttempts(attempts + 1)
-                        localStorage.setItem('CharadasTentativas', attempts + 1)
-                        setMyAnswer(inputAnswer)
+                        isCorrectAnswer()
                     }
                 }
             }}
@@ -27,7 +36,7 @@ export function InputAnswer() {
             <input
                 className="w-full p-2"
                 type={'text'}
-                placeholder={charadaOfDay.resposta}
+                placeholder={myStats.myAnswer}
                 onChange={(e) => {
                     setInputAnswer(e.target.value)
                 }}

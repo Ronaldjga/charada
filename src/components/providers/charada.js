@@ -6,30 +6,28 @@ export const Charada = createContext({});
 
 export const CharadaProvider = (props) => {
     const charadaOfDay = CharadaList.charadas[8]
-    const [attempts, setAttempts] = useState(0)
-    const [myAnswer, setMyAnswer] = useState('')
-    const [isSuccess, setIsSuccess] = useState()
+    const [history, setHistory] = useState()
+    const [myStats, setMyStats] = useState({
+        myAnswer: '',
+        attempts: null,
+        stats: null
+    })
+
     
-    const isCorrectAnswer = () => {
-        if (myAnswer.length > 0) {
-            if (myAnswer === charadaOfDay.resposta) {
-                setIsSuccess(true)
-            } else {
-                setIsSuccess(false)
-            }
-        } else { return }
+    const isCorrectAnswer = (myAnswer) => {
+        
     }
     
     useEffect(() => {
-        isCorrectAnswer()
-    }, [myAnswer])
-    
-    useEffect(() => {
-        setAttempts(JSON.parse(localStorage.getItem('CharadasTentativas')))
+        if (!localStorage.getItem('charadaStats')) {
+            return
+        } else {
+            setMyStats(JSON.parse(localStorage.getItem('charadaStats')))
+        }
     }, [])
 
     return (
-        <Charada.Provider value={{ charadaOfDay, attempts, setAttempts, myAnswer, setMyAnswer, isSuccess}}>
+        <Charada.Provider value={{ charadaOfDay, myStats, setMyStats, isCorrectAnswer}}>
             {props.children}
         </Charada.Provider>
     );

@@ -2,22 +2,22 @@ import react, {useState ,useEffect} from "react";
 import { useCharada } from "../providers/charada";
 
 export function FlashAnswer() {
-    const {charadaOfDay , attempts, isSuccess } = useCharada();
+    const {charadaOfDay , myStats } = useCharada();
     const [flashMenssage, setFlashMenssage] = useState('');
 
     useEffect(() => {
-        if (isSuccess === true) {
+        if (myStats.stats === true) {
             setFlashMenssage('Resposta Certa');
-        } else if (isSuccess === false) {
+        } else if (myStats.stats === false) {
             setFlashMenssage('Resposta Errada')
         } else {
             setFlashMenssage('')
         }
-    }, [isSuccess])
+    }, [myStats])
 
     return (
         <div>
-            <p className="text-white">{attempts}</p>
+            <p className="text-white">{myStats.attempts}</p>
             <p className="text-white">{flashMenssage}</p>
         </div>
     )
