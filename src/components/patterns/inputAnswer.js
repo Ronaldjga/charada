@@ -36,7 +36,7 @@ export function InputAnswer() {
             <input
                 className="w-full p-2"
                 type={'text'}
-                placeholder={myStats.myAnswer}
+                placeholder={myStats.myAnswer === '' ? 'Resposta' : myStats.myAnswer}
                 onChange={(e) => {
                     setInputAnswer(e.target.value)
                 }}

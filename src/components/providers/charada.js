@@ -6,18 +6,12 @@ export const Charada = createContext({});
 
 export const CharadaProvider = (props) => {
     const charadaOfDay = CharadaList.charadas[8]
-    const [history, setHistory] = useState()
     const [myStats, setMyStats] = useState({
         myAnswer: '',
         attempts: null,
         stats: null
     })
 
-    
-    const isCorrectAnswer = (myAnswer) => {
-        
-    }
-    
     useEffect(() => {
         if (!localStorage.getItem('charadaStats')) {
             return
@@ -27,7 +21,7 @@ export const CharadaProvider = (props) => {
     }, [])
 
     return (
-        <Charada.Provider value={{ charadaOfDay, myStats, setMyStats, isCorrectAnswer}}>
+        <Charada.Provider value={{ charadaOfDay, myStats, setMyStats}}>
             {props.children}
         </Charada.Provider>
     );
