@@ -6,7 +6,8 @@ export function InputAnswer() {
     const [inputAnswer, setInputAnswer] = useState('')
 
     const isCorrectAnswer = () => {
-        if (inputAnswer === charadaOfDay.resposta) {
+        
+        if (inputAnswer.toLocaleUpperCase().includes(charadaOfDay.resposta.toLocaleUpperCase())) {
             setMyStats({ stats: true, attempts: myStats.attempts + 1, myAnswer: inputAnswer })
             const stats = {stats: true, attempts: myStats.attempts + 1, myAnswer: inputAnswer }
             localStorage.setItem('charadaStats', JSON.stringify(stats))
