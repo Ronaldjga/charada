@@ -5,12 +5,36 @@ import CharadaList from '../../../charadas.json';
 export const Charada = createContext({});
 
 export const CharadaProvider = (props) => {
-    const charadaOfDay = CharadaList.charadas[8]
+    const charadaToday = new Date();
+    const [day, setDay] = useState(charadaToday.getDate() - 1);
+    const charadaOfDay = CharadaList.charadas[day]
+    const [secondUpdate, setSecondUpdate] = useState();
     const [myStats, setMyStats] = useState({
         myAnswer: '',
         attempts: null,
         stats: null
     })
+
+
+    useEffect(() => {
+        const minuto = charadaToday.getDate() - 1
+        window.clearTimeout(window)
+        setTimeout(() => {
+            if (minuto === day) {
+                return
+            } else {
+                setMyStats({
+                    myAnswer: '',
+                    attempts: null,
+                    stats: null
+                })
+                localStorage.removeItem('charadaStats')
+                setDay(charadaToday.getDate() - 1)
+            }
+            setSecondUpdate(charadaToday.getSeconds())
+        }, 1000)
+    }, [secondUpdate])
+    
 
     useEffect(() => {
         if (!localStorage.getItem('charadaStats')) {
@@ -21,7 +45,7 @@ export const CharadaProvider = (props) => {
     }, [])
 
     return (
-        <Charada.Provider value={{ charadaOfDay, myStats, setMyStats}}>
+        <Charada.Provider value={{ charadaOfDay, myStats, setMyStats, day}}>
             {props.children}
         </Charada.Provider>
     );
