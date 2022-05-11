@@ -11,7 +11,8 @@ export function InputAnswer() {
             setInputStyle('bg-green-500 text-darkBluePrimary brightness-150 text-center font-bold text-xl')
             setInputAnswer(charadaOfDay.resposta.toLocaleUpperCase())
         } else if (myStats.stats === false) {
-            setInputStyle('bg-rose-600 brightness-150 ')
+            setInputStyle('bg-rose-600 brightness-150 text-white font-bold')
+            setInputAnswer('')
         } else {
             return
         }
@@ -32,7 +33,7 @@ export function InputAnswer() {
 
     return (
         <form
-            className="w-full lg:w-2/3"
+            className="w-full lg:w-2/3 text-xl"
             action=""
             onSubmit={(e) => {
                 e.preventDefault();
@@ -48,7 +49,7 @@ export function InputAnswer() {
             }}
         >
             <input
-                className={`${inputStyle} w-full p-2 font-semibold rounded-[4px] border-0`}
+                className={`${inputStyle} w-full p-2 font-semibold rounded-[4px] border-0 tracking-wide`}
                 type={'text'}
                 disabled={myStats.stats === true ? true : false}
                 placeholder={myStats.myAnswer === '' ? 'Resposta' : `Ultima resposta: ${myStats.myAnswer}`}
