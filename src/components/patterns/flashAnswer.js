@@ -20,7 +20,7 @@ export function FlashAnswer() {
 
     return (
         <div className="text-center">
-            <p className="text-white">{myStats.attempts > 0 ? `${myStats.attempts} Tentativas` : null}</p>
+            <p className="text-white font-semibold">{myStats.attempts > 0 ? `${myStats.attempts} Tentativas` : null}</p>
             <p className={`${flashMenssageStyle} font-bold text-2xl`}>{flashMenssage.toLocaleUpperCase()}</p>
         </div>
     )
