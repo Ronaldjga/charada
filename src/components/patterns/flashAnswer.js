@@ -4,21 +4,24 @@ import { useCharada } from "../providers/charada";
 export function FlashAnswer() {
     const {charadaOfDay , myStats } = useCharada();
     const [flashMenssage, setFlashMenssage] = useState('');
+    const [flashMenssageStyle, setFlashMenssageStyle] = useState('');
 
     useEffect(() => {
         if (myStats.stats === true) {
             setFlashMenssage('Resposta Certa');
+            setFlashMenssageStyle('text-green-500 brightness-150 animate-pulse')
         } else if (myStats.stats === false) {
             setFlashMenssage('Resposta Errada')
+            setFlashMenssageStyle('text-rose-600 brightness-150')
         } else {
             setFlashMenssage('')
         }
     }, [myStats])
 
     return (
-        <div>
-            <p className="text-white">{myStats.attempts}</p>
-            <p className="text-white">{flashMenssage}</p>
+        <div className="text-center">
+            <p className="text-white">{myStats.attempts > 0 ? `${myStats.attempts} Tentativas` : null}</p>
+            <p className={`${flashMenssageStyle} font-bold text-2xl`}>{flashMenssage.toLocaleUpperCase()}</p>
         </div>
     )
 }

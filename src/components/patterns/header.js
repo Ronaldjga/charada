@@ -25,8 +25,10 @@ export default function Header() {
     
     return (
         <NavButtonsProvider>
-            <h1 className="text-8xl font-bold text-yellowPrimary">Charada</h1>
-            <Options/>
+            <div className="flex flex-col gap-3">
+                <h1 className="text-5xl sm:text-8xl font-bold text-yellowPrimary font-h1Title">Charada</h1>
+                <Options/>
+            </div>
         </NavButtonsProvider>
     )
 }
@@ -54,7 +56,7 @@ function Options() {
             {isOpen === true
                 ? (
                     <div className="fixed">
-                        <div className="fixed top-0 left-0 w-full h-full bg-gray-600 bg-opacity-25" onClick={(e)=> setIsOpen(false)}/>
+                        <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-30" onClick={(e)=> setIsOpen(false)}/>
                         {modal}
                     </div>
                 )
@@ -76,7 +78,10 @@ function ButtonNav({title, text, icon}) {
                     } else {
                         setIsOpen(true)
                         setModal(
-                            <div className="fixed p-4 w-2/4 min-h-[250px] flex flex-col items-center bg-red-500 top-2/4 left-2/4 transform -translate-x-2/4 -translate-y-2/4">
+                            <div className="fixed p-4 w-2/4 min-h-[250px] flex flex-col gap-3 items-center top-2/4 left-2/4 transform -translate-x-2/4 -translate-y-2/4
+                            
+                            bg-gray-900 text-white rounded-[4px] border border-yellowPrimary
+                            ">
                                 <h2 className="text-2xl font-bold">{title}</h2>
                                 <p className="w-full text-center">{text}</p>
                              </div>

@@ -4,6 +4,18 @@ import { useCharada } from "../providers/charada";
 export function InputAnswer() {
     const { charadaOfDay, myStats, setMyStats} = useCharada()
     const [inputAnswer, setInputAnswer] = useState('')
+    const [inputStyle, setInputStyle] = useState()
+
+    useEffect(() => {
+        if (myStats.stats === true) {
+            setInputStyle('bg-green-500 text-darkBluePrimary brightness-150 text-center font-bold text-xl')
+            setInputAnswer(charadaOfDay.resposta.toLocaleUpperCase())
+        } else if (myStats.stats === false) {
+            setInputStyle('bg-rose-600 brightness-150 ')
+        } else {
+            return
+        }
+    },[myStats])
 
     const isCorrectAnswer = () => {
         
@@ -20,6 +32,7 @@ export function InputAnswer() {
 
     return (
         <form
+            className="w-full lg:w-2/3"
             action=""
             onSubmit={(e) => {
                 e.preventDefault();
@@ -35,9 +48,11 @@ export function InputAnswer() {
             }}
         >
             <input
-                className="w-full p-2"
+                className={`${inputStyle} w-full p-2 font-semibold rounded-[4px] border-0`}
                 type={'text'}
-                placeholder={myStats.myAnswer === '' ? 'Resposta' : myStats.myAnswer}
+                disabled={myStats.stats === true ? true : false}
+                placeholder={myStats.myAnswer === '' ? 'Resposta' : `Ultima resposta: ${myStats.myAnswer}`}
+                value={inputAnswer}
                 onChange={(e) => {
                     setInputAnswer(e.target.value)
                 }}
