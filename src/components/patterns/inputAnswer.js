@@ -14,6 +14,8 @@ export function InputAnswer() {
             setInputStyle('bg-rose-600 brightness-150 text-white font-bold')
             setInputAnswer('')
         } else {
+            setInputStyle('')
+            setInputAnswer('')
             return
         }
     },[myStats])

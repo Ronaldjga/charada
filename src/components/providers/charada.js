@@ -20,6 +20,7 @@ export const CharadaProvider = (props) => {
         const minuto = charadaToday.getDate() - 1
         window.clearTimeout(window)
         setTimeout(() => {
+            setSecondUpdate(charadaToday.getSeconds())
             if (minuto === day) {
                 return
             } else {
@@ -31,7 +32,6 @@ export const CharadaProvider = (props) => {
                 localStorage.removeItem('charadaStats')
                 setDay(charadaToday.getDate() - 1)
             }
-            setSecondUpdate(charadaToday.getSeconds())
         }, 1000)
     }, [secondUpdate])
     
