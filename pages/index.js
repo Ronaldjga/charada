@@ -5,6 +5,7 @@ import { HelpForUser } from "../src/components/patterns/helpForUser";
 import { InputAnswer } from "../src/components/patterns/inputAnswer";
 import { CharadaContainer } from "../src/components/patterns/charadaContainer";
 import { CharadaProvider } from "../src/components/providers/charada";
+import { ReportButton } from "../src/components/patterns/report";
 
 export default function Home() {
     return (
@@ -18,6 +19,7 @@ export default function Home() {
                         <FlashAnswer />
                         <InputAnswer/>
                     </div>
+                    <ReportButton/>
                 </div>
             </div>
         </CharadaProvider>
