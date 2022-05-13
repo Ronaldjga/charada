@@ -1,4 +1,3 @@
-import { info } from "autoprefixer";
 import react, { useState } from "react";
 import { createContext, useContext } from "react";
 import helpIcon from '../img/help-circle.svg'
@@ -90,7 +89,7 @@ function ButtonNav({title, text, icon}) {
 
                             lg:w-2/4
                             ">
-                                <h2 className="text-3xl font-bold">{title}</h2>
+                                <h2 className="text-3xl font-bold text-yellowPrimary">{title}</h2>
                                 <p className="w-full text-center">{text}</p>
                              </div>
                         )

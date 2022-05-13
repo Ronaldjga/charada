@@ -13,7 +13,7 @@ export default function Home() {
             <div className="w-full h-full bg-darkBluePrimary">
                 <div className="w-full h-full p-5 max-w-screen-xl mx-auto flex flex-col gap-3 items-center">
                     <Header/>
-                    <div className="w-full h-full flex flex-col gap-2 justify-center items-center md:h-2/3">
+                    <div className="w-full h-full flex flex-col gap-5 sm:justify-center items-center md:h-2/3">
                         <CharadaContainer />
                         <HelpForUser/>
                         <FlashAnswer />
