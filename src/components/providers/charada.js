@@ -19,6 +19,7 @@ export const CharadaProvider = (props) => {
 
     useEffect(() => {
         clearTimeout(window)
+        //console.log(day, myStats.charadaDay)
         setTimeout(() => {
             setSecondUpdate(charadaToday.getMilliseconds())
             setDay(charadaToday.getDate() - 1)
@@ -26,6 +27,7 @@ export const CharadaProvider = (props) => {
                 return
             } else {
                 setMyStats({
+                    charadaDay: day,
                     myAnswer: '',
                     attempts: null,
                     stats: null
