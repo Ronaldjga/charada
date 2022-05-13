@@ -6,7 +6,6 @@ import { InputAnswer } from "../src/components/patterns/inputAnswer";
 import { CharadaContainer } from "../src/components/patterns/charadaContainer";
 import { CharadaProvider } from "../src/components/providers/charada";
 import { ReportButton } from "../src/components/patterns/report";
-import favicon from '../src/components/img/favicon.svg'
 import Head from "next/head";
 
 export default function Home() {
@@ -17,7 +16,7 @@ export default function Home() {
                 <meta property="Description" content="Charada" key="title" />
             </Head>
             <Head>
-                <link rel="shortcut icon" href="../src/components/img/favicon.svg" />
+                <link rel="shortcut icon" href="https://github.com/Ronaldjga/charada/blob/main/src/components/img/favicon.png?raw=true" />
             </Head>
             <div className="w-full h-full bg-darkBluePrimary">
                 <div className="w-full h-full p-5 max-w-screen-xl mx-auto flex flex-col gap-3 items-center">
