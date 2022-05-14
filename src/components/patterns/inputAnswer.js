@@ -23,12 +23,12 @@ export function InputAnswer() {
     const isCorrectAnswer = () => {
         
         if (inputAnswer.toLocaleUpperCase().includes(charadaOfDay.resposta.toLocaleUpperCase())) {
-            setMyStats({ stats: true, attempts: myStats.attempts + 1, myAnswer: inputAnswer })
-            const stats = {stats: true, attempts: myStats.attempts + 1, myAnswer: inputAnswer }
+            setMyStats({...myStats, stats: true, attempts: myStats.attempts + 1, myAnswer: inputAnswer })
+            const stats = {...myStats, stats: true, attempts: myStats.attempts + 1, myAnswer: inputAnswer }
             localStorage.setItem('charadaStats', JSON.stringify(stats))
         } else {
-            setMyStats({ stats: false, attempts: myStats.attempts + 1, myAnswer: inputAnswer }) 
-            const stats = { stats: false, attempts: myStats.attempts + 1, myAnswer: inputAnswer }
+            setMyStats({...myStats,  stats: false, attempts: myStats.attempts + 1, myAnswer: inputAnswer }) 
+            const stats = {...myStats, stats: false, attempts: myStats.attempts + 1, myAnswer: inputAnswer }
             localStorage.setItem('charadaStats', JSON.stringify(stats))
         }
     }

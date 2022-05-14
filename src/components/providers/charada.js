@@ -10,6 +10,7 @@ export const CharadaProvider = (props) => {
     const charadaOfDay = CharadaList.charadas[day]
     const [secondUpdate, setSecondUpdate] = useState();
     const [myStats, setMyStats] = useState({
+        charadaDay: charadaOfDay.id - 1,
         myAnswer: '',
         attempts: null,
         stats: null
@@ -17,11 +18,11 @@ export const CharadaProvider = (props) => {
 
 
     useEffect(() => {
-        const minuto = charadaToday.getDate() - 1
-        window.clearTimeout(window)
+        clearTimeout(window)
         setTimeout(() => {
-            setSecondUpdate(charadaToday.getSeconds())
-            if (minuto === day) {
+            setSecondUpdate(charadaToday.getMilliseconds())
+            setDay(charadaToday.getDate() - 1)
+            if (day === myStats.charadaDay) {
                 return
             } else {
                 setMyStats({
@@ -30,11 +31,10 @@ export const CharadaProvider = (props) => {
                     stats: null
                 })
                 localStorage.removeItem('charadaStats')
-                setDay(charadaToday.getDate() - 1)
             }
-        }, 1000)
+        }, 1);
+        
     }, [secondUpdate])
-    
 
     useEffect(() => {
         if (!localStorage.getItem('charadaStats')) {
